@@ -1,0 +1,4 @@
+[target.aarch64-unknown-linux-gnu]
+# pre-build = [ "dpkg --add-architecture arm64 && apt-get update && apt-get install --assume-yes protobuf-compiler zlib1g-dev:arm64" ]
+pre-build = "./pre_crossbuild_script.sh"
+dockerfile = "./Dockerfile.Cross"
