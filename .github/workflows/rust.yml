@@ -11,6 +11,7 @@ jobs:
       matrix:
         target:
           - aarch64-unknown-linux-gnu
+          - x86_64-unknown-linux-gnu
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt install --assume-yes git clang curl libssl-dev llvm libudev-dev make protobuf-compiler
@@ -29,5 +30,5 @@ jobs:
           args: --target ${{matrix.target}} --release +nightly
       - uses: actions/upload-artifact@v3
         with:
-          name: aarch64-binary
-          path: target/aarch64-unknown-linux-gnu/release/node-template
+          name: ${{matrix.target}}-binary
+          path: target/${{matrix.target}}/release/node-template
