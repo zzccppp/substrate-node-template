@@ -45,6 +45,8 @@ use pallet_transaction_payment::{ConstFeeMultiplier, CurrencyAdapter, Multiplier
 pub use sp_runtime::BuildStorage;
 pub use sp_runtime::{Perbill, Permill};
 
+pub use iot_auth;
+
 /// Import the template pallet.
 pub use pallet_template;
 
@@ -152,6 +154,13 @@ parameter_types! {
 }
 
 use frame_system::EnsureRoot;
+
+impl iot_auth::Config for Runtime {
+    type RuntimeEvent = RuntimeEvent;
+    // type Currency = Balances;
+    type CollectionRandomness = RandomnessCollectiveFlip;
+    type MaximumOwned = frame_support::pallet_prelude::ConstU32<100>;
+}
 
 impl pallet_node_authorization::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
@@ -311,6 +320,7 @@ construct_runtime!(
 		Sudo: pallet_sudo,
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template,
+		IotAuth: iot_auth,
 		NodeAuthorization: pallet_node_authorization::{Pallet, Call, Storage, Event<T>, Config<T>},
 	}
 );

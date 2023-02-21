@@ -2492,6 +2492,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "iot-auth"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+]
+
+[[package]]
 name = "ip_network"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3714,6 +3724,7 @@ dependencies = [
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
+ "iot-auth",
  "pallet-aura",
  "pallet-balances",
  "pallet-grandpa",
